@@ -28,8 +28,8 @@ app.use(
 app.use(cookieParser());
 
 // Creamos nuestras rutas
-const authControllers = require("./routes/auth");
-app.use("/", authControllers);
+const authRoutes = require("./routes/auth");
+app.use("/", authRoutes);
 
 
 // Ponemos en funcionamiento nuestra aplicación
