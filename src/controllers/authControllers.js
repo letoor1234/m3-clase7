@@ -58,7 +58,8 @@ const getSignupData = (req, res) => {
         password: hash,
       };
       req.session.userId = id;
-      
+      req.session.save();
+
       // Reescribimos el objeto .json con nuestro array de datos
       fs.writeFileSync(
         path.join(__dirname, "../models/user.json"),
