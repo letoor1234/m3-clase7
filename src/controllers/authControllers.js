@@ -1,8 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 const sendSigninForm = (req, res) => {
+  console.log("get session: ", req.session);
   res.render("signin.ejs");
 };
 
@@ -34,6 +36,7 @@ const getSigninData = (req, res) => {
 };
 
 const sendSignupForm = (req, res) => {
+  console.log("get session: ", req.session);
   res.render("signup.ejs");
 };
 
@@ -48,18 +51,20 @@ const getSignupData = (req, res) => {
   bcrypt.genSalt(10, (err, salt) => {
     // Hasheamos el dato en cuestion (textAHashear, clave, callbback() )
     bcrypt.hash(password, salt, (err, hash) => {
+      const id = crypto.randomUUID();
+      const newUser = {
+        id,
+        user,
+        password: hash,
+      };
+      req.session.userId = id;
+      
       // Reescribimos el objeto .json con nuestro array de datos
       fs.writeFileSync(
         path.join(__dirname, "../models/user.json"),
         JSON.stringify(
           // Creamos un nuevo objeto dentro del array
-          [
-            ...parsedFile,
-            {
-              user,
-              password: hash,
-            },
-          ],
+          [...parsedFile, newUser],
           // no sabemos que hace
           null,
           // Aplica una sangría en cada salto de linea

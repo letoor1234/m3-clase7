@@ -31,7 +31,6 @@ app.use(cookieParser());
 const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);
 
-
 // Ponemos en funcionamiento nuestra aplicación
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port: ", process.env.PORT);

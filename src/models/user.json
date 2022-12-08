@@ -1,14 +1,17 @@
 [
   {
+    "id": "4aad4fa7-471b-469e-a09b-883c91c3f4a4",
     "user": "angelitox",
-    "password": "$2b$10$GtROOfgSkmA4Tk/6NSO1Ju2S0vEfkLMTVMM44hcT.UKn/ACmSuXtG"
+    "password": "$2b$10$fesMG5M9do8Irl1LZAS.r.HxDIfOu1udGEtKaxzU6sJ7Mv8vej1ae"
   },
   {
-    "user": "usuario",
-    "password": "$2b$10$Q3UVD1fic1oSb0SaeEXhleAAr4jJIVHEL1vGIB/OHImoT8WX0sLDe"
+    "id": "7b13b38b-111d-4d98-b3c6-59c5c51f8904",
+    "user": "angelitox",
+    "password": "$2b$10$n/cS5QIftO2.t52roA1jHupmu46PtiWVOLxfLuTrkRHtxR043xdsi"
   },
   {
+    "id": "7f9e531d-c9b4-4638-ad9f-a50b77954df2",
     "user": "angelitox",
-    "password": "$2b$10$n9X0FP.AWZ.yW5SK139p/.mZZMwgh70d94gN32X.Q0Wlhw3ms6zK."
+    "password": "$2b$10$05SopZo8RxKUb0X9uuxPguxFrn8I.ttqwC/miLdnbOOl0wYMrm8L6"
   }
 ]
