@@ -31,8 +31,11 @@ const getSigninData = (req, res) => {
     return res.render("invalid.ejs");
   }
 
+  req.session.userId = existedUser.id;
+  req.session.save();
+
   // Si todo salio ok, enviamos al dashboard
-  res.render("dashboard.ejs", { user });
+  res.redirect("/");
 };
 
 const sendSignupForm = (req, res) => {
@@ -75,7 +78,7 @@ const getSignupData = (req, res) => {
     });
   });
 
-  res.redirect("/signin");
+  res.redirect("/");
 };
 
 module.exports = {
