@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
 const sendSigninForm = (req, res) => {
-  console.log("get session: ", req.session);
   res.render("signin.ejs");
 };
 
@@ -16,7 +15,7 @@ const getSigninData = (req, res) => {
   let parsedFile = JSON.parse(file);
 
   // Buscamos si existe el usuario con mismo user
-  const existedUser = parsedFile.find((usuario) => usuario.user === user);
+  const existedUser = parsedFile.find((current) => current.user === user);
 
   // Si no existe, retornamos invalido
   if (!existedUser) {
@@ -39,7 +38,6 @@ const getSigninData = (req, res) => {
 };
 
 const sendSignupForm = (req, res) => {
-  console.log("get session: ", req.session);
   res.render("signup.ejs");
 };
 
@@ -49,6 +47,12 @@ const getSignupData = (req, res) => {
   // Obtenemos el archivo con los usuarios existentes
   const file = fs.readFileSync(path.join(__dirname, "../models/user.json"));
   let parsedFile = JSON.parse(file);
+
+  // Verificar si ya existe
+  const existedUser = parsedFile.some((current) => current.user === user);
+  if (existedUser) {
+    return res.send("El usuario ya existe!!!!");
+  }
 
   // Generar el salt del hash (como una clave de encriptacion)
   bcrypt.genSalt(10, (err, salt) => {
