@@ -4,16 +4,23 @@ const {
   getSignupData,
   sendSigninForm,
   getSigninData,
+  signOut,
 } = require("../controllers/authControllers");
+const {
+  checkUserNotSigned,
+  checkUserId,
+} = require("../middlewares/checkUserId");
 
 const router = Router();
 
-router.get("/signup", sendSignupForm);
+router.get("/signup", [checkUserNotSigned], sendSignupForm);
 
 router.post("/signup", getSignupData);
 
-router.get("/signin", sendSigninForm);
+router.get("/signin", [checkUserNotSigned], sendSigninForm);
 
 router.post("/signin", getSigninData);
+
+router.get("/signout", [checkUserId], signOut);
 
 module.exports = router;

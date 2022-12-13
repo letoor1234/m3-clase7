@@ -4,10 +4,12 @@ const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
 const sendSigninForm = (req, res) => {
+  console.log("get /signin");
   res.render("signin.ejs");
 };
 
 const getSigninData = (req, res) => {
+  console.log("post /signin");
   const { user, password } = req.body;
 
   // Obtenemos el archivo con los usuarios existentes
@@ -38,10 +40,12 @@ const getSigninData = (req, res) => {
 };
 
 const sendSignupForm = (req, res) => {
+  console.log("get /signup");
   res.render("signup.ejs");
 };
 
 const getSignupData = (req, res) => {
+  console.log("post /signup");
   const { user, password } = req.body;
 
   // Obtenemos el archivo con los usuarios existentes
@@ -85,9 +89,17 @@ const getSignupData = (req, res) => {
   res.redirect("/");
 };
 
+const signOut = (req, res) => {
+  console.log("get /signout");
+  req.session.destroy();
+
+  res.redirect("/signin");
+};
+
 module.exports = {
   sendSigninForm,
   getSigninData,
   sendSignupForm,
   getSignupData,
+  signOut,
 };

@@ -7,6 +7,11 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Bienvenido <%= user %>!</h1>
+    <h1>Bienvenido <%= user.user %>!</h1>
+    <h4>Password <%= user.password %></h4>
+    <h4>Id <%= user.id %></h4>
+    <form action="/signout" method="get">
+      <button type="submit">Cerrar sesion</button>
+    </form>
   </body>
 </html>
